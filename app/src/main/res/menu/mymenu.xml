@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_main">
+    <item
+        android:id="@+id/sort_by_date"
+        android:orderInCategory="100"
+        android:title="@string/action_logout"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sort_by_name"
+        android:orderInCategory="100"
+        android:title="@string/sort_by_name"
+        app:showAsAction="never" />
+</menu>

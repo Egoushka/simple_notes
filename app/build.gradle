@@ -1,0 +1,116 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+apply plugin: "kotlin-android-extensions"
+
+android {
+    compileSdkVersion 30
+    buildFeatures {
+        viewBinding true
+    }
+    defaultConfig {
+        applicationId "com.languagexx.simplenotes"
+        minSdkVersion 15
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+buildscript {
+    ext.kotlin_version = '1.4.30'
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        def nav_version = "2.3.0-alpha01"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+dependencies {
+
+    implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
+    def room_version = "2.2.6"
+    def lifecycle_version = "2.2.0"
+    def dagger_version = "2.27"
+    def recycler_view = "1.1.0"
+    def nav_version = "2.3.3"
+
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    //Room library
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    //ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    //Theme.MaterialComponents.DayNight
+    implementation 'com.google.android.material:material:1.3.0-rc01'
+    //Dagger
+    api "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    //Dagger Android
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt  "com.google.dagger:dagger-compiler:$dagger_version"
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    kapt  "com.google.dagger:dagger-android-processor:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt  "com.google.dagger:dagger-android-support:$dagger_version"
+    //Kotlin
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8"
+
+    //Coroutines LiveData Scope
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+
+    //RecyclerView
+    implementation "androidx.recyclerview:recyclerview:$recycler_view"
+
+    //Material library
+    implementation 'com.google.android.material:material:1.2.1'
+
+    //Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    implementation 'com.android.support:design:27.0.2'
+    implementation 'com.android.support:support-v4:27.0.2'
+}
+

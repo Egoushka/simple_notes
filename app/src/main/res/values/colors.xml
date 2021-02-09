@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="whiteColorPrimary">#008577</color>
+    <color name="whiteColorPrimaryDark">#00574B</color>
+    <color name="whiteColorAccent">#D81B60</color>
+
+    <color name="DarkColorPrimary">#008577</color>
+    <color name="DarkColorPrimaryDark">#00574B</color>
+    <color name="DarkColorAccent">#D81B60</color>
+
+
+    <color name="colorPink">#E880FC</color>
+    <color name="colorBlue">#64FFDA</color>
+    <color name="colorLightBlue">#BBDEFB</color>
+    <color name="colorYellow">#FFC400</color>
+    <color name="colorLightBrown">#A1887F</color>
+
+</resources>

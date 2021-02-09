@@ -1,0 +1,71 @@
+package com.languagexx.simplenotes.persistence
+
+import android.os.Parcel
+import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.util.*
+
+
+// - Entity class for note table
+// - A Parcelable is the Android implementation of the Java Serializable
+// - It is used to transfer data between activities or fragments
+
+@Entity(tableName = "tbl_note1")
+class Note(@PrimaryKey(autoGenerate = true)
+           var id: Int,
+           var title: String?,
+           var description: String?,
+           var date: Int, ) :Parcelable{
+
+
+    constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readInt()
+        )
+
+
+    // Method #1
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
+    }
+
+    // Method #2
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+        parcel.writeString(title)
+        parcel.writeString(description)
+        parcel.writeInt(date)
+
+    }
+
+    // Method #3
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Note> {
+        // Method #4
+        override fun createFromParcel(parcel: Parcel): Note {
+            return Note(parcel)
+        }
+
+        // Method #5
+        override fun newArray(size: Int): Array<Note?> {
+            return arrayOfNulls(size)
+        }
+    }
+
+    // Method #6
+    override fun hashCode(): Int {
+        var result = id
+        result = 31 * result + (title?.hashCode() ?: 0)
+        result = 31 * result + (description?.hashCode() ?: 0)
+        result = 31 * result + (date?.hashCode() ?: 0)
+        return result
+    }
+
+
+}
